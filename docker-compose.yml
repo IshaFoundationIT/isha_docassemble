@@ -1,30 +1,8 @@
 version: "3.7"
 services:
-  db:
-    image: postgres
+  regn:
+    image: jhpyle/docassemble
     restart: always
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
-      PGDATA: /var/lib/postgresql/data
-    volumes:
-      - /workspace/db-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: me@gitpod.io
-      PGADMIN_DEFAULT_PASSWORD: secret
-      PGADMIN_LISTEN_PORT: 8080
-      PGADMIN_SERVER_JSON_FILE: /workspace/postgres-compose/servers.json
-    ports:
-      - "8080:8080"
-    volumes:
-      - /workspace/pgadmin-data:/var/lib/pgadmin
-      - /tmp:/tmp
-      - /workspace:/workspace
-    links:
-      - "db:pgsql-server"
+      - "80:80"
+      - "443:443"
